@@ -1,0 +1,17 @@
+{
+  "name": "shashin",
+  "version": "1.0.0",
+  "description": "practice img searching and displaying app",
+  "main": "index.js",
+  "scripts": {
+    "server": "node server/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  }
+}

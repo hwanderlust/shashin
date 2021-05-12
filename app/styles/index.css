@@ -1,0 +1,154 @@
+:root {
+  --color__baby-powder: #FBFEFB;
+  --color__independence: #585563;
+  --color__linen: #EFE5DC;
+  --color__blue-munsell: #048BA8;
+  --color__zomp: #52AA8A;
+}
+
+html, 
+body {
+  margin: 0;
+  background-color: var(--color__independence);
+}
+body :is(h1, h2, h3, h4, h5, h6, p, a, label) {
+  color: var(--color__baby-powder);
+}
+body *:focus {
+  outline: 2px dashed var(--color__blue-munsell);
+  outline-offset: 0.5rem;
+}
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.header :is(h1) {
+  font-size: clamp(1rem, 2rem, 3rem);
+  display: grid;
+  place-content: center;
+  letter-spacing: 0.5rem;
+}
+.header :is(h1) :is(a) {
+  text-decoration: none;
+  color: var(--color__linen);
+}
+
+.search {
+  margin: clamp(1rem, 2vh, 3vh);
+}
+.search form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: min(100px, 10vh);
+}
+.search form input[type="text"] {
+  background-color: var(--color__linen);
+  width: 90vw;
+  height: 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  border: none;
+}
+.search form input[type="submit"] {
+  background-color: var(--color__zomp);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  color: black;
+  font-weight: 600;
+}
+
+.images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  place-content: center;
+  max-width: calc(5 * 220px);
+  margin: 0 auto;
+}
+.image__container {
+  background: transparent;
+  border: none;
+}
+.image__container:hover {
+  transform: scale(1.04);
+  transition: 250ms ease-out;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  place-content: center;
+}
+.modal__underlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal__close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  z-index: 1;
+  font-weight: 800;
+  font-size: clamp(1rem, 1.5rem, 2rem);
+}
+.modal__content {
+  position: relative;
+  background: rgba(239, 229, 220, 0.75);
+  padding: 1rem 0 0 0;
+  z-index: 1;
+  overflow-y: scroll;
+}
+.modal figure {
+  display: grid;
+  place-items: center;
+}
+.modal figure img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: 16/9;
+  background: no-repeat center url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif");
+}
+.modal figure figcaption {
+  max-width: 50ch;
+}
+
+@supports(gap: clamp(4px, 8px, 16px)) {
+  .images {
+    gap: clamp(4px, 8px, 16px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .search form input[type="text"] {
+    width: 50vw;
+  }
+}
+
+@media screen and (min-width: 1480px) {
+  .modal__content {
+    display: grid;
+  }
+  .modal__close-btn {
+    position: relative;
+    top: revert;
+    right: revert;
+  }
+}
