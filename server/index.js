@@ -6,7 +6,7 @@ require('dotenv').config();
 const server = express();
 const ACCESS_KEY = process.env.ACCESS_KEY;
 const PORT = process.env.PORT || 3000;
-const UNSPLASH_URL = `https://api.unsplash.com/search/photos`
+const UNSPLASH_URL = `https://api.unsplash.com/search/photos`;
 
 server.use(cors());
 server.use(logger);
@@ -54,7 +54,7 @@ function apiRequest(query, pageNum, handleSuccess = console.log, handleFailure =
   const options = {
     method: 'GET',
     headers: {
-      'Authorization': `Client-ID ${ACCESS_KEY}`
+      'Authorization': `Client-ID ${ACCESS_KEY}`,
     }
   }
 
@@ -77,21 +77,19 @@ function apiRequest(query, pageNum, handleSuccess = console.log, handleFailure =
 
 function serialize(data) {
   if (!data.length) return [];
-  return data.map(el => {
-    return {
-      id: el.id,
-      date: el.created_at,
-      description: el.description || el.slug,
-      urls: el.urls,
-      links: el.links,
-      likes: el.likes,
-      user: {
-        id: el.user.id,
-        username: el.user.username || pic.user.twitter_username || pic.user.name,
-        bio: el.user.bio
-      }
+  return data.map(el => ({
+    id: el.id,
+    date: el.created_at,
+    description: el.description || el.slug,
+    urls: el.urls,
+    links: el.links,
+    likes: el.likes,
+    user: {
+      id: el.user.id,
+      username: el.user.username || pic.user.twitter_username || pic.user.name,
+      bio: el.user.bio
     }
-  });
+  }));
 }
 
 function logger(req, res, next) {

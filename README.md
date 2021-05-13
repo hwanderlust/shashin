@@ -1,5 +1,5 @@
 # Shashin
-A basic image fetching app via Unsplash
+Shashin, Japanese for picture, is a basic image fetching app via Unsplash.
 
 ## Get started
 1. Clone repo

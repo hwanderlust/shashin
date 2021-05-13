@@ -135,7 +135,7 @@ function handleSubmit(event) {
       console.debug(r);
 
       if (!r.photos) {
-        imagesContainer.innerHTML = `<h2 style="text-align: center;">Sorry, we couldn't find any pictures for ${query}.</h2>`;
+        imagesContainer.innerHTML = `<h2 style="text-align: center;">Sorry, we couldn't find any pictures for "<em>${query}</em>".</h2>`;
         return;
       }
 
